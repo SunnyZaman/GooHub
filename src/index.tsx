@@ -11,7 +11,10 @@ import { HashRouter } from 'react-router-dom';
 const MainWrapper = styled.div`
   flex-grow: 1;
   position: relative;
-  min-height: 100vh
+  min-height: 100vh;
+  top: 0;
+  width: 100%;
+  position: absolute
 `;
 const AppContainer = styled.div`
   padding-bottom: 0
