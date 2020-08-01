@@ -12,15 +12,15 @@ const MainWrapper = styled.div`
   flex-grow: 1;
   position: relative;
   min-height: 100vh;
-  top: 0;
+  margin-top: -47px;
   width: 100%;
   position: absolute
 `;
-const AppContainer = styled.div`
-  padding-bottom: 0
-`;
+// const AppContainer = styled.div`
+//   padding-bottom: 0
+// `;
 const ViewsContainer = styled.div`
-  width:100%
+  width:100%;
 `;
 
 ReactDOM.render(
@@ -28,12 +28,10 @@ ReactDOM.render(
     <HashRouter>
       <GlobalStyle />
       <MainWrapper>
-        <AppContainer>
           <Header />
           <ViewsContainer>
             <Routes />
           </ViewsContainer>
-        </AppContainer>
         <Footer />
       </MainWrapper>
     </HashRouter>

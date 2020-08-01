@@ -11,13 +11,18 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
+  height:47px;
   border-bottom: 1px solid black
 `;
+const Link = styled.a`
+    font-size: 13px
+`;
+
 function Header() {
     return (
         <Wrapper>
-            <h1>Header</h1>
-            <img src={GLogo}  alt="G logo" height="44.57px" width="auto"/>
+            <Link>Header</Link>
+            <img src={GLogo}  alt="G logo" height="20px" width="auto"/>
 
         </Wrapper>
     );
