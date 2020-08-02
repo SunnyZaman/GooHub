@@ -20,6 +20,7 @@ const MainWrapper = styled.div`
 // `;
 const ViewsContainer = styled.div`
   width: 100%;
+  height: calc(100% - 47px);
   position: absolute;
   top: 47px;
   z-index: 0;
