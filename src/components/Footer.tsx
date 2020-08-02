@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterWrapper = styled.div`
     position: absolute;
-    bottom: 47px;
+    bottom: 0px;
     width:100%
 `;
 function Footer() {

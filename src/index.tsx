@@ -12,7 +12,6 @@ const MainWrapper = styled.div`
   flex-grow: 1;
   position: relative;
   min-height: 100vh;
-  margin-top: -47px;
   width: 100%;
   position: absolute
 `;
@@ -20,7 +19,10 @@ const MainWrapper = styled.div`
 //   padding-bottom: 0
 // `;
 const ViewsContainer = styled.div`
-  width:100%;
+  width: 100%;
+  position: absolute;
+  top: 47px;
+  z-index: 0;
 `;
 
 ReactDOM.render(
