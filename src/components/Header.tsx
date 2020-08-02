@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   top: 0;
   width: 100%;
   height:47px;
-  border-bottom: 1px solid black;
+//   border-bottom: 1px solid black;
 `;
 const InnerContainer = styled.div`
     margin: 0 auto;
