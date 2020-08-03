@@ -43,7 +43,7 @@ function Homepage() {
                 <Button>Google Search</Button>
                 <Button>I'm Feeling Lucky</Button>
             </ButtonContainer>
-            <p>Google offered in <a href="">francais</a></p>
+            <p>Google offered in: <a href="/">Francais</a></p>
         </HomeWrapper>
     );
 }

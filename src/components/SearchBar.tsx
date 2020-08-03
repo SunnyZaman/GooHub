@@ -1,5 +1,4 @@
 import React from 'react';
-import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
 
 const SearchInput = styled.input`
@@ -17,7 +16,7 @@ const SearchInput = styled.input`
 
 function SearchBar() {
     return (
-            <SearchInput></SearchInput>
+            <SearchInput type="text"></SearchInput>
     );
 }
 
