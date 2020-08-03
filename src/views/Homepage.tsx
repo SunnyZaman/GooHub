@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
+import SearchBar from '../components/SearchBar';
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -11,15 +12,6 @@ const HomeWrapper = styled.div`
   width: 100%;
   height:100%
 `;
-const SearchBar = styled.input`
-    border: none;
-    padding: 10px;
-    margin: 10px;
-    height: 20px;
-    width: 500px;
-    border:1px solid #eaeaea;
-    outline:none;
-`;
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -28,16 +20,19 @@ const ButtonContainer = styled.div`
   align-items: center;
   width:100%
 `;
-const Button = styled.div`
+const Button = styled.button`
   background-color:#f2f2f2;
-  border:none;
   padding:10px;
   margin:10px;
-  color:#757575;
-  font-size:10pt;
-  font-weight:bold;
-  font-family:arial;
-  border-radius: 2px;
+  color:#5F6368;
+  font-size:14px;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  &:hover{
+    cursor: pointer;
+    border: 1px solid #5F6368;
+    color: #252626;
+  }
 `;
 function Homepage() {
     return (
@@ -48,6 +43,7 @@ function Homepage() {
                 <Button>Google Search</Button>
                 <Button>I'm Feeling Lucky</Button>
             </ButtonContainer>
+            <p>Google offered in <a href="">francais</a></p>
         </HomeWrapper>
     );
 }
