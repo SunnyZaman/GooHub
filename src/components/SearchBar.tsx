@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SearchIcon } from '../assets/images';
 
 const SearchInput = styled.input`
-    padding: 10px;
+    padding: 10px 40px 10px 40px;
     margin: 10px;
     height: 20px;
     width: 500px;
@@ -16,7 +17,10 @@ const SearchInput = styled.input`
 
 function SearchBar() {
     return (
+        <div>
             <SearchInput type="text"></SearchInput>
+            <img src={SearchIcon}  alt="Search Icon" height="20px" width="auto"/>
+        </div>
     );
 }
 
