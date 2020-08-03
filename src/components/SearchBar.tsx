@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SearchIcon } from '../assets/images';
+const SearchWrapper = styled.div`
+    position: relative;
 
+`;
 const SearchInput = styled.input`
     padding: 10px 40px 10px 40px;
     margin: 10px;
@@ -15,12 +18,21 @@ const SearchInput = styled.input`
     }
 `;
 
+const SearchImage = styled.img`
+  position: absolute;
+  left: 20;
+  top: 15px;
+  padding: 9px 8px;
+  color: #aaa;
+  transition: 0.3s;
+`;
+
 function SearchBar() {
     return (
-        <div>
+        <SearchWrapper>
             <SearchInput type="text"></SearchInput>
-            <img src={SearchIcon}  alt="Search Icon" height="20px" width="auto"/>
-        </div>
+            <SearchImage className="" src={SearchIcon}  alt="Search Icon" height="15px" width="auto"/>
+        </SearchWrapper>
     );
 }
 
