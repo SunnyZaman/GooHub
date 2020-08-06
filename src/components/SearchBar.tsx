@@ -63,7 +63,8 @@ function SearchBar() {
         <SearchWrapper>
             <SearchInput type="text" name="search" onChange={handleChange}></SearchInput>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            {hasInput ? <CloseImage src={CloseIcon} tabIndex={0} alt="Close Icon" height="15px" width="auto" /> : null}
+            {hasInput && <ImageTooltip imageContainer={CloseContainer} imageComp={CloseImage} icon={CloseIcon} altText={"Close Icon"} 
+            iconHeight={"15px"} iconWidth={"auto"}  tooltipText={"Clear"}/>}
             <ImageTooltip imageContainer={MicContainer} imageComp={MicImage} icon={MicIcon} altText={"Mic Icon"} 
             iconHeight={"20px"} iconWidth={"auto"}  tooltipText={"Search by voice"}/>
             {/* <MicImage src={MicIcon} tabIndex={0} alt="Mic Icon" height="20px" width="auto" title="this will be displayed as a tooltip" /> */}
