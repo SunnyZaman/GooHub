@@ -7,7 +7,7 @@ function Routes() {
     return (
         <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/profile/:requestId?" component={Profile} />
+            <Route exact path="/profile/:searchQuery" component={Profile} />
             <Redirect to="/" />
         </Switch>
     )

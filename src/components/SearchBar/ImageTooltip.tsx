@@ -33,7 +33,10 @@ function ImageTooltip(props: any) {
         <ImageContainer>
             <ImageComp src={icon} tabIndex={0} alt={altText} height={iconHeight} width={iconWidth} onClick={setValue}
                 onMouseEnter={() => setIsShown(true)}
-                onMouseLeave={() => setIsShown(false)} />
+                onMouseLeave={() => setIsShown(false)}
+                onFocus={() => setIsShown(true)} 
+                onBlur={() => setIsShown(false)} 
+                />
             {isShown && <Tooltip toolTipProps={toolTipProps}>{tooltipText}</Tooltip>}
         </ImageContainer>
     );

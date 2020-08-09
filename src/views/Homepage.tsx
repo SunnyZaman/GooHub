@@ -42,7 +42,7 @@ function Homepage() {
   const search = () => {
     //   console.log("the search val: ", searchValue);
     if (searchValue.length > 0) {
-      history.push('/profile');
+      history.push('/profile/' + searchValue);
     }
   }
   const handleKeyDown = (event: any) => {
