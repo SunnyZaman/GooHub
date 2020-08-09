@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SearchIcon, MicIcon, CloseIcon } from '../assets/images';
+import { SearchIcon, MicIcon, CloseIcon } from '../../assets/images';
 import ImageTooltip from './ImageTooltip';
+import Microphone from './IconButtons/Microphone';
 
 const SearchWrapper = styled.div`
     position: relative;
@@ -27,17 +28,17 @@ const SearchImage = styled.img`
   filter: invert(73%) sepia(8%) saturate(262%) hue-rotate(169deg) brightness(87%) contrast(85%);
 `;
 
-const MicContainer = styled.div`
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  `;
-  const MicImage = styled.img`
-  padding: 9px 8px;
-  right:10px;
-  position: absolute;
-  cursor:pointer
-`;
+// const MicContainer = styled.div`
+//   position: absolute;
+//   right: 20px;
+//   top: 10px;
+//   `;
+//   const MicImage = styled.img`
+//   padding: 9px 8px;
+//   right:10px;
+//   position: absolute;
+//   cursor:pointer
+// `;
 const CloseContainer = styled.div`
     position: absolute;
     outline: none;
@@ -54,6 +55,8 @@ const CloseImage = styled.img`
 function SearchBar() {
     // Use react-tooltips
     const [hasInput, setHasInput] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         console.log(name, value);
@@ -65,8 +68,7 @@ function SearchBar() {
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
             {hasInput && <ImageTooltip imageContainer={CloseContainer} imageComp={CloseImage} icon={CloseIcon} altText={"Close Icon"} 
             iconHeight={"15px"} iconWidth={"auto"}  tooltipText={"Clear"}/>}
-            <ImageTooltip imageContainer={MicContainer} imageComp={MicImage} icon={MicIcon} altText={"Mic Icon"} 
-            iconHeight={"20px"} iconWidth={"auto"}  tooltipText={"Search by voice"}/>
+            <Microphone/>
             {/* <MicImage src={MicIcon} tabIndex={0} alt="Mic Icon" height="20px" width="auto" title="this will be displayed as a tooltip" /> */}
         </SearchWrapper>
     );
