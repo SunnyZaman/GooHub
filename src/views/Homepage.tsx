@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const HomeWrapper = styled.div`
