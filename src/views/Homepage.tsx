@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
+import { Link } from 'react-router-dom';
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -36,21 +37,24 @@ const Button = styled.button`
 `;
 function Homepage() {
   const [searchValue, setSearchValue] = useState("");
-const search = () =>{
-  console.log("the search val: ", searchValue);
-  
-}
-    return (
-        <HomeWrapper>
-            <img src={GoogleLogo}  alt="Google logo" height="100px" width="auto"/>
-            <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}></SearchBar>
-            <ButtonContainer>
-                <Button onClick={search}>Google Search</Button>
-                <Button>I'm Feeling Lucky</Button>
-            </ButtonContainer>
-            <p>Google offered in: <a href="/">Francais</a></p>
-        </HomeWrapper>
-    );
+  // const search = () =>{
+  //   console.log("the search val: ", searchValue);
+  // }
+  return (
+    <HomeWrapper>
+      <img src={GoogleLogo} alt="Google logo" height="100px" width="auto" />
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}></SearchBar>
+      <ButtonContainer>
+        <Link to={searchValue.length > 0 ? "/profile" : "#"}>
+          <Button>
+            Google Search
+        </Button>
+        </Link>
+        <Button>I'm Feeling Lucky</Button>
+      </ButtonContainer>
+      <p>Google offered in: <a href="/">Francais</a></p>
+    </HomeWrapper>
+  );
 }
 
 export default Homepage;
