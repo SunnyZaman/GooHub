@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 const Tooltip:any = styled.span`
-    // visibility: visible;
-    // width: 180px;
     background-color: #222;
     color: #fff;
     text-align: center;
@@ -11,7 +9,7 @@ const Tooltip:any = styled.span`
     // border: 0.5px solid #ffff;
     box-shadow: 0 0 5px #000;
     z-index: 1;
-    top: 45px;
+    top: ${(props:any)=>props.toolTipProps.top};
     left: ${(props:any)=>props.toolTipProps.left};
     width: ${(props:any)=>props.toolTipProps.width};
     font-size: 12px;
@@ -28,7 +26,6 @@ const Tooltip:any = styled.span`
       };
 `;
 function ImageTooltip(props: any) {
-    // const { imageObject } = props;
     const { container: ImageContainer, imageComponent: ImageComp, icon, altText, iconHeight, iconWidth, tooltipText, toolTipProps, setValue } = props.imageObject;
     const [isShown, setIsShown] = useState(false);
 

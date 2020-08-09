@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
@@ -35,12 +35,17 @@ const Button = styled.button`
   }
 `;
 function Homepage() {
+  const [searchValue, setSearchValue] = useState("");
+const search = () =>{
+  console.log("the search val: ", searchValue);
+  
+}
     return (
         <HomeWrapper>
             <img src={GoogleLogo}  alt="Google logo" height="100px" width="auto"/>
-            <SearchBar></SearchBar>
+            <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}></SearchBar>
             <ButtonContainer>
-                <Button>Google Search</Button>
+                <Button onClick={search}>Google Search</Button>
                 <Button>I'm Feeling Lucky</Button>
             </ButtonContainer>
             <p>Google offered in: <a href="/">Francais</a></p>
