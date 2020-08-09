@@ -9,18 +9,30 @@ const MicContainer = styled.div`
   top: 10px;
   `;
 const MicImage = styled.img`
+  outline:none;
   padding: 9px 8px;
   right:10px;
   position: absolute;
   cursor:pointer
 `;
 function Microphone(props: any) {
-    const imageObject = {
+    const startListening = () => {
+        console.log("Work");
         
+        props.setValue("I was listening");
+    };
+    const imageObject = {
+        container: MicContainer,
+        imageComponent: MicImage,
+        icon: MicIcon,
+        altText: "Microphone Icon",
+        iconHeight: "20px",
+        iconWidth: "auto",
+        tooltipText: "Search by voice",
+        setValue: startListening
     };
     return (
-        <ImageTooltip imageContainer={MicContainer} imageComp={MicImage} icon={MicIcon} altText={"Mic Icon"}
-            iconHeight={"20px"} iconWidth={"auto"} tooltipText={"Search by voice"} />
+        <ImageTooltip imageObject={imageObject} />
     );
 }
 

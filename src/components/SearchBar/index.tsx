@@ -60,15 +60,16 @@ function SearchBar() {
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         console.log(name, value);
+        setSearchValue(value);
         setHasInput(value.length > 0);
     }
     return (
         <SearchWrapper>
-            <SearchInput type="text" name="search" onChange={handleChange}></SearchInput>
+            <SearchInput type="text" name="search" value={searchValue} onChange={handleChange}></SearchInput>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            {hasInput && <ImageTooltip imageContainer={CloseContainer} imageComp={CloseImage} icon={CloseIcon} altText={"Close Icon"} 
-            iconHeight={"15px"} iconWidth={"auto"}  tooltipText={"Clear"}/>}
-            <Microphone/>
+            {/* {hasInput && <ImageTooltip imageContainer={CloseContainer} imageComp={CloseImage} icon={CloseIcon} altText={"Close Icon"} 
+            iconHeight={"15px"} iconWidth={"auto"}  tooltipText={"Clear"}/>} */}
+            <Microphone setValue={setSearchValue}/>
             {/* <MicImage src={MicIcon} tabIndex={0} alt="Mic Icon" height="20px" width="auto" title="this will be displayed as a tooltip" /> */}
         </SearchWrapper>
     );

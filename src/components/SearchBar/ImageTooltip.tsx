@@ -28,12 +28,13 @@ const Tooltip = styled.span`
       };
 `;
 function ImageTooltip(props: any) {
-    const { imageContainer: ImageContainer, imageComp: ImageComp, icon, altText, iconHeight, iconWidth, tooltipText } = props;
+    // const { imageObject } = props;
+    const { container: ImageContainer, imageComponent: ImageComp, icon, altText, iconHeight, iconWidth, tooltipText, setValue } = props.imageObject;
     const [isShown, setIsShown] = useState(false);
 
     return (
         <ImageContainer>
-            <ImageComp src={icon} tabIndex={0} alt={altText} height={iconHeight} width={iconWidth} 
+            <ImageComp src={icon} tabIndex={0} alt={altText} height={iconHeight} width={iconWidth} onClick={setValue}
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}/>
             {isShown &&<Tooltip>{tooltipText}</Tooltip> }
