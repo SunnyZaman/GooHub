@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SearchIcon, MicIcon, CloseIcon } from '../assets/images';
-import ImageTooltip from './ImageTooltip';
+import { SearchIcon } from '../../assets/images';
+import Microphone from './IconButtons/Microphone';
+import Cancel from './IconButtons/Cancel';
 
 const SearchWrapper = styled.div`
     position: relative;
@@ -27,46 +28,47 @@ const SearchImage = styled.img`
   filter: invert(73%) sepia(8%) saturate(262%) hue-rotate(169deg) brightness(87%) contrast(85%);
 `;
 
-const MicContainer = styled.div`
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  `;
-  const MicImage = styled.img`
-  padding: 9px 8px;
-  right:10px;
-  position: absolute;
-  cursor:pointer
-`;
-const CloseContainer = styled.div`
-    position: absolute;
-    outline: none;
-    border-right: 0.8px solid #eaeaea38;
-    right: 53px;
-    margin-right: 3px;
-    top: 20px;
-`;
-const CloseImage = styled.img`
-    padding: 3px 14px 3px 8px;
-    position: absolute;
-    filter: invert(58%) sepia(10%) saturate(213%) hue-rotate(165deg) brightness(88%) contrast(87%);
-`;
+// const MicContainer = styled.div`
+//   position: absolute;
+//   right: 20px;
+//   top: 10px;
+//   `;
+//   const MicImage = styled.img`
+//   padding: 9px 8px;
+//   right:10px;
+//   position: absolute;
+//   cursor:pointer
+// `;
+// const CloseContainer = styled.div`
+//     position: absolute;
+//     outline: none;
+//     border-right: 0.8px solid #eaeaea38;
+//     right: 53px;
+//     margin-right: 3px;
+//     top: 20px;
+// `;
+// const CloseImage = styled.img`
+//     padding: 3px 14px 3px 8px;
+//     position: absolute;
+//     filter: invert(58%) sepia(10%) saturate(213%) hue-rotate(165deg) brightness(88%) contrast(87%);
+// `;
 function SearchBar() {
     // Use react-tooltips
     const [hasInput, setHasInput] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         console.log(name, value);
+        setSearchValue(value);
         setHasInput(value.length > 0);
     }
     return (
         <SearchWrapper>
-            <SearchInput type="text" name="search" onChange={handleChange}></SearchInput>
+            <SearchInput type="text" name="search" value={searchValue} onChange={handleChange}></SearchInput>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            {hasInput && <ImageTooltip imageContainer={CloseContainer} imageComp={CloseImage} icon={CloseIcon} altText={"Close Icon"} 
-            iconHeight={"15px"} iconWidth={"auto"}  tooltipText={"Clear"}/>}
-            <ImageTooltip imageContainer={MicContainer} imageComp={MicImage} icon={MicIcon} altText={"Mic Icon"} 
-            iconHeight={"20px"} iconWidth={"auto"}  tooltipText={"Search by voice"}/>
+            {hasInput && <Cancel setValue={setSearchValue}/>}
+            <Microphone setValue={setSearchValue}/>
             {/* <MicImage src={MicIcon} tabIndex={0} alt="Mic Icon" height="20px" width="auto" title="this will be displayed as a tooltip" /> */}
         </SearchWrapper>
     );
