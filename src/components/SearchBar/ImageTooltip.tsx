@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-const Tooltip = styled.span`
+const Tooltip:any = styled.span`
     // visibility: visible;
     // width: 180px;
     background-color: #222;
     color: #fff;
     text-align: center;
     padding: 7px;
-    position: relative;
+    position: absolute;
     // border: 0.5px solid #ffff;
     box-shadow: 0 0 5px #000;
     z-index: 1;
-    top: 53px;
-    left: 62%;
-    margin-left: -60px;
+    top: 45px;
+    left: ${(props:any)=>props.toolTipProps.left};
+    width: ${(props:any)=>props.toolTipProps.width};
     font-size: 12px;
     font-weight:600;
     &::after {
@@ -29,15 +29,15 @@ const Tooltip = styled.span`
 `;
 function ImageTooltip(props: any) {
     // const { imageObject } = props;
-    const { container: ImageContainer, imageComponent: ImageComp, icon, altText, iconHeight, iconWidth, tooltipText, setValue } = props.imageObject;
+    const { container: ImageContainer, imageComponent: ImageComp, icon, altText, iconHeight, iconWidth, tooltipText, toolTipProps, setValue } = props.imageObject;
     const [isShown, setIsShown] = useState(false);
 
     return (
         <ImageContainer>
             <ImageComp src={icon} tabIndex={0} alt={altText} height={iconHeight} width={iconWidth} onClick={setValue}
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}/>
-            {isShown &&<Tooltip>{tooltipText}</Tooltip> }
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)} />
+            {isShown && <Tooltip toolTipProps={toolTipProps}>{tooltipText}</Tooltip>}
         </ImageContainer>
     );
 }

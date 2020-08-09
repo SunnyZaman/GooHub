@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ImageTooltip from '../ImageTooltip';
 import { MicIcon } from '../../../assets/images';
 
 const MicContainer = styled.div`
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 47px;
+  top: 19px;
   `;
 const MicImage = styled.img`
   outline:none;
-  padding: 9px 8px;
-  right:10px;
   position: absolute;
   cursor:pointer
 `;
@@ -29,6 +27,7 @@ function Microphone(props: any) {
         iconHeight: "20px",
         iconWidth: "auto",
         tooltipText: "Search by voice",
+        toolTipProps:{left:"-47px", width:"93px"},
         setValue: startListening
     };
     return (
