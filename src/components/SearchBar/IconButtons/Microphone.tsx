@@ -4,19 +4,14 @@ import ImageTooltip from '../ImageTooltip';
 import { MicIcon } from '../../../assets/images';
 
 const MicContainer = styled.div`
-  position: absolute;
-  right: 47px;
-  top: 19px;
+  position: relative;
   `;
 const MicImage = styled.img`
   outline:none;
-  position: absolute;
   cursor:pointer
 `;
 function Microphone(props: any) {
     const startListening = () => {
-        console.log("Work");
-        
         props.setValue("I was listening");
     };
     const imageObject = {
@@ -27,7 +22,7 @@ function Microphone(props: any) {
         iconHeight: "20px",
         iconWidth: "auto",
         tooltipText: "Search by voice",
-        toolTipProps:{left:"-47px", width:"93px"},
+        toolTipProps:{top:"45px", left:"-47px", width:"93px"},
         setValue: startListening
     };
     return (
