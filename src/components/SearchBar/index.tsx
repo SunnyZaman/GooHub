@@ -9,13 +9,17 @@ const SearchWrapper = styled.div`
     align-content: stretch;
     height: 36px;
     width: 500px;
+    
     border: 1px solid rgb(234, 234, 234);
     border-radius: 24px;
     align-items: center;
     padding: 0px 1em;
     &:hover, &:focus-within {
-            box-shadow:0px 3px 8px #E4E4E4;
-        }
+        box-shadow:0px 3px 8px #E4E4E4;
+    };
+    @media (max-width: 560px) {
+        width: 90%;
+    }
 `;
 const SearchInput = styled.input`
     flex: 1 0 auto;
