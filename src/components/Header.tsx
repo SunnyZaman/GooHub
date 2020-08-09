@@ -1,5 +1,7 @@
 import React from 'react';
-import { GLogo } from '../assets/images';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
+import { GoogleLogo, GLogo } from '../assets/images';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -23,7 +25,7 @@ const InnerContainer = styled.div`
     max-width: 148rem;
     padding: 0 15px;
 `;
-const Link = styled.a`
+const StyledLink = styled.a`
     font-size: 13px;
     color:#595959;
     text-decoration: none;
@@ -33,13 +35,23 @@ const Link = styled.a`
 `;
 
 function Header() {
+    const location = useLocation();
+    const isHome = (location.pathname === "/" || location.pathname === "/home") ? true : false;
+    // console.log(location.pathname);
     return (
         <Wrapper>
-         <InnerContainer>
-             {/* temp link, will link to my portfolio */}
-            <Link href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</Link>
-            <img src={GLogo}  alt="G logo" height="20px" width="auto"/>
-         </InnerContainer>
+            <InnerContainer>
+                {/* temp link, will link to my portfolio */}
+                {isHome ?
+                    <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
+                    (
+                        <Link to="/">
+                            <img src={GoogleLogo} alt="Google logo" height="20px" width="auto" />
+                        </Link>
+                    )
+                }
+                <img src={GLogo} alt="G logo" height="20px" width="auto" />
+            </InnerContainer>
 
         </Wrapper>
     );
