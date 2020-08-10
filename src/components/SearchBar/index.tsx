@@ -33,8 +33,8 @@ const SearchImage = styled.img`
 `;
 function SearchBar(props: any) {
     const [hasInput, setHasInput] = useState(false);
-    const inputRef:any = useRef(null);
-    const { searchValue, setSearchValue } = props;
+    const inputRef: any = useRef(null);
+    const { searchValue, setSearchValue, handleKeyDown } = props;
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         console.log(name, value);
@@ -44,15 +44,16 @@ function SearchBar(props: any) {
         setHasInput(searchValue.length > 0);
 
     }, [searchValue]);
-    const inputFocus = () =>{
+    const inputFocus = () => {
         inputRef.current!.focus()
     }
     return (
         <SearchWrapper onClick={inputFocus}>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            <SearchInput type="text" name="search" value={searchValue} ref={inputRef} onChange={handleChange}></SearchInput>
-                {hasInput && <Cancel setValue={setSearchValue} />}
-                <Microphone setValue={setSearchValue} />
+            <SearchInput type="text" name="search" value={searchValue} ref={inputRef} onChange={handleChange}
+                onKeyPress={handleKeyDown} />
+            {hasInput && <Cancel setValue={setSearchValue} />}
+            <Microphone setValue={setSearchValue} />
         </SearchWrapper>
     );
 }
