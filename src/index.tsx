@@ -7,7 +7,19 @@ import styled from 'styled-components';
 import * as serviceWorker from './serviceWorker';
 import GlobalStyle from './globalStyle';
 import { HashRouter } from 'react-router-dom';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
+const client = new ApolloClient({
+  uri: "https://api.github.com/graphql",
+  request: async operation => {
+    operation.setContext({
+      headers: {
+        authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+      }
+    });
+  }
+});
 const MainWrapper = styled.div`
   flex-grow: 1;
   position: relative;
@@ -15,9 +27,6 @@ const MainWrapper = styled.div`
   width: 100%;
   position: absolute
 `;
-// const AppContainer = styled.div`
-//   padding-bottom: 0
-// `;
 const ViewsContainer = styled.div`
   width: 100%;
   height: calc(100% - 47px);
@@ -28,6 +37,7 @@ const ViewsContainer = styled.div`
 
 ReactDOM.render(
   <React.StrictMode>
+      <ApolloProvider client={client}>
     <HashRouter>
       <GlobalStyle />
       <MainWrapper>
@@ -38,6 +48,7 @@ ReactDOM.render(
         <Footer />
       </MainWrapper>
     </HashRouter>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

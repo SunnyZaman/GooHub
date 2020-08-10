@@ -1,13 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Loader from '../components/Loader';
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+
+const REPOSITORIES = gql`
+  {
+    viewer {
+      repositories(last: 100, isFork: false) {
+        nodes {
+          name
+          description
+          url
+          languages(first: 5) {
+            nodes {
+              color
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 function Profile() {
-    const [isLoaded, setLoad] = useState(false);
     return (
-        isLoaded ?
-            (<div>
-                <h1>Profile</h1>
-            </div>) :
-            <Loader />
+        <Query query={REPOSITORIES} variables={{}}>
+            {
+                ({ data, loading }: any) => {
+                    return loading ? (<Loader />) : 
+                    (<p>Loaded</p>)
+                }
+            }
+        </Query>
     );
 }
 

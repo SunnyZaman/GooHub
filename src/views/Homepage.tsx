@@ -38,7 +38,7 @@ const Button = styled.button`
 `;
 function Homepage() {
   const [searchValue, setSearchValue] = useState("");
-  const history = useHistory();
+  const history = useHistory();  
   const search = () => {
     //   console.log("the search val: ", searchValue);
     if (searchValue.length > 0) {
