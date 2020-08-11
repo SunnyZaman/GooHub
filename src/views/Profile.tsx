@@ -4,6 +4,8 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
+import { GLogo } from '../assets/images';
+
 const Tabs = styled.div`
   overflow: hidden;
   background: #fff;
@@ -102,6 +104,7 @@ function Profile() {
           return loading ? (<Loader />) :
             (<div><Tabs>
               <Tab onClick={handleClick} active={active === 0} id={0}>
+              <img src={GLogo} alt="G logo" height="20px" width="auto" />
                 Content1
               </Tab>
 
