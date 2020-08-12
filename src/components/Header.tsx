@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import { GoogleLogo, GLogo } from '../assets/images';
 import styled from 'styled-components';
+import SearchBar from './SearchBar';
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,9 +46,12 @@ function Header() {
                 {isHome ?
                     <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
                     (
+                        <>
                         <Link to="/">
                             <img src={GoogleLogo} alt="Google logo" height="20px" width="auto" />
                         </Link>
+                        <SearchBar/>
+                        </>
                     )
                 }
                 <img src={GLogo} alt="G logo" height="20px" width="auto" />

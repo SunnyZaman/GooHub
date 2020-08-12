@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { SearchIcon } from '../../assets/images';
 import Microphone from './IconButtons/Microphone';
 import Cancel from './IconButtons/Cancel';
+import { useHistory } from 'react-router-dom';
 
 const SearchWrapper = styled.div`
     display: flex;
@@ -32,26 +33,43 @@ const SearchImage = styled.img`
   filter: invert(73%) sepia(8%) saturate(262%) hue-rotate(169deg) brightness(87%) contrast(85%);
 `;
 function SearchBar(props: any) {
+    const history = useHistory();
+    const [searchValue, setSearchValue] = useState("");
     const [hasInput, setHasInput] = useState(false);
     const inputRef: any = useRef(null);
-    const { searchValue, setSearchValue, handleKeyDown } = props;
+    const { isSearching } = props;
+    useEffect(() => {
+        setHasInput(searchValue.length > 0);
+    }, [searchValue]);
+    useEffect(() => {
+        if (isSearching) {
+            search();
+        }
+    }, [isSearching]);
     const handleChange = (event: any) => {
         const { name, value } = event.target;
         console.log(name, value);
         setSearchValue(value);
     }
-    useEffect(() => {
-        setHasInput(searchValue.length > 0);
-
-    }, [searchValue]);
+    const handleKeyDown = (event: any) => {
+        if (event.key === "Enter") {
+            search();
+        }
+    }
+    const search = () => {
+        //   console.log("the search val: ", searchValue);
+        if (searchValue.length > 0) {
+            history.push('/profile/' + searchValue);
+        }
+    }
     const inputFocus = () => {
         inputRef.current!.focus()
     }
     return (
         <SearchWrapper onClick={inputFocus}>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            <SearchInput type="text" name="search" value={searchValue} ref={inputRef} onChange={handleChange}
-                onKeyPress={handleKeyDown} />
+            <SearchInput type="text" name="search" autoComplete="off"
+                value={searchValue} ref={inputRef} onChange={handleChange} onKeyPress={handleKeyDown} />
             {hasInput && <Cancel setValue={setSearchValue} />}
             <Microphone setValue={setSearchValue} />
         </SearchWrapper>
