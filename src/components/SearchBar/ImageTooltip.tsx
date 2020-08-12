@@ -8,7 +8,7 @@ const Tooltip:any = styled.span`
     position: absolute;
     // border: 0.5px solid #ffff;
     box-shadow: 0 0 5px #000;
-    z-index: 1;
+    z-index: 100;
     top: ${(props:any)=>props.toolTipProps.top};
     left: ${(props:any)=>props.toolTipProps.left};
     width: ${(props:any)=>props.toolTipProps.width};

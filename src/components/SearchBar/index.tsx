@@ -32,12 +32,18 @@ const SearchInput = styled.input`
 const SearchImage = styled.img`
   filter: invert(73%) sepia(8%) saturate(262%) hue-rotate(169deg) brightness(87%) contrast(85%);
 `;
+const SearchButton = styled.img`
+    margin-left: 10px;
+    filter: invert(38%) sepia(100%) saturate(557%) hue-rotate(183deg) brightness(106%) contrast(92%);
+    outline:none;
+    cursor:pointer
+`;
 function SearchBar(props: any) {
+    const { isSearching, isProfile, defaultSearchVal } = props;
     const history = useHistory();
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState(defaultSearchVal);
     const [hasInput, setHasInput] = useState(false);
     const inputRef: any = useRef(null);
-    const { isSearching } = props;
     useEffect(() => {
         setHasInput(searchValue.length > 0);
     }, [searchValue]);
@@ -72,6 +78,8 @@ function SearchBar(props: any) {
                 value={searchValue} ref={inputRef} onChange={handleChange} onKeyPress={handleKeyDown} />
             {hasInput && <Cancel setValue={setSearchValue} />}
             <Microphone setValue={setSearchValue} />
+            {isProfile && <SearchButton src={SearchIcon} tabIndex={0} onClick={search} 
+            alt="Search Button" height="15px" width="auto"/>}
         </SearchWrapper>
     );
 }

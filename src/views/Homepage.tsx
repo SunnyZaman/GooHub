@@ -56,7 +56,7 @@ function Homepage() {
   return (
     <HomeWrapper>
       <img src={GoogleLogo} alt="Google logo" height="100px" width="auto" />
-      <SearchBar isSearching={isSearching}/>
+      <SearchBar isSearching={isSearching} isProfile={false} defaultSearchVal={""}/>
        {/* searchValue={searchValue} setSearchValue={setSearchValue}
          handleKeyDown={handleKeyDown} /> */}
       <ButtonContainer>
