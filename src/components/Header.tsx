@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import { GoogleLogo, GLogo } from '../assets/images';
 import styled from 'styled-components';
+import SearchBar from './SearchBar';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ const InnerContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     max-width: 148rem;
     padding: 0 15px;
@@ -33,10 +35,21 @@ const StyledLink = styled.a`
         text-decoration: underline;
     }
 `;
-
+const LogoSearchContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: -12px 0 0 -12px;
+    >*{
+        margin: 12px 0 0 12px;
+    }
+`;
 function Header() {
     const location = useLocation();
     const isHome = (location.pathname === "/" || location.pathname === "/home") ? true : false;
+    const getSearchQuery = () =>{
+        return location.pathname.split("profile/")[1];
+    }
     // console.log(location.pathname);
     return (
         <Wrapper>
@@ -45,9 +58,12 @@ function Header() {
                 {isHome ?
                     <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
                     (
-                        <Link to="/">
-                            <img src={GoogleLogo} alt="Google logo" height="20px" width="auto" />
-                        </Link>
+                        <LogoSearchContainer>
+                            <Link to="/">
+                                <img src={GoogleLogo} alt="Google logo" height="30px" width="auto" />
+                            </Link>
+                            <SearchBar isSearching={false} isProfile={true} defaultSearchVal={getSearchQuery} />
+                        </LogoSearchContainer>
                     )
                 }
                 <img src={GLogo} alt="G logo" height="20px" width="auto" />

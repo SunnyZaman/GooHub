@@ -3,7 +3,7 @@ import { GoogleLogo } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 // import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const HomeWrapper = styled.div`
   display: flex;
@@ -37,27 +37,31 @@ const Button = styled.button`
   }
 `;
 function Homepage() {
-  const [searchValue, setSearchValue] = useState("");
-  const history = useHistory();  
-  const search = () => {
-    //   console.log("the search val: ", searchValue);
-    if (searchValue.length > 0) {
-      history.push('/profile/' + searchValue);
-    }
-  }
-  const handleKeyDown = (event: any) => {
-    if (event.key === "Enter") {
-      search();
-    }
+  const [isSearching, setSearching] = useState(false);
+  // const history = useHistory();  
+  // const search = () => {
+  //   //   console.log("the search val: ", searchValue);
+  //   if (searchValue.length > 0) {
+  //     history.push('/profile/' + searchValue);
+  //   }
+  // }
+  // const handleKeyDown = (event: any) => {
+  //   if (event.key === "Enter") {
+  //     search();
+  //   }
+  // }
+  const handleClick = ()=>{
+    setSearching(true);
   }
   return (
     <HomeWrapper>
       <img src={GoogleLogo} alt="Google logo" height="100px" width="auto" />
-      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}
-        handleKeyDown={handleKeyDown} />
+      <SearchBar isSearching={isSearching} isProfile={false} defaultSearchVal={""}/>
+       {/* searchValue={searchValue} setSearchValue={setSearchValue}
+         handleKeyDown={handleKeyDown} /> */}
       <ButtonContainer>
         {/* <Link to={searchValue.length > 0 ? "/profile" : "#"} tabIndex={-1}> */}
-        <Button onClick={search}>
+        <Button onClick={handleClick}>
           Google Search
         </Button>
         {/* </Link> */}

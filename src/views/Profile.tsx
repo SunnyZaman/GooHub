@@ -17,7 +17,7 @@ const Tab: any = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  width: 40%;
+  width: 10%;
   position: relative;
 
   margin-right: 0.1em;
@@ -71,14 +71,19 @@ function Profile() {
           name
           createdAt
           description
-          homepageUrl
+          homepageUrl,
+          languages(first: 5) {
+              nodes {
+                color
+                name
+              }
+            }
         }
       }
       followers(first:100){
         nodes{
           name
           avatarUrl
-          email
           login
           bio
         }
@@ -111,6 +116,12 @@ function Profile() {
               <Tab onClick={handleClick} active={active === 1} id={1}>
                 Content2
               </Tab>
+              <Tab onClick={handleClick} active={active === 2} id={2}>
+                Content3
+              </Tab>
+              <Tab onClick={handleClick} active={active === 3} id={3}>
+                Content4
+              </Tab>
             </Tabs>
 
               <Content active={active === 0}>
@@ -118,6 +129,12 @@ function Profile() {
               </Content>
               <Content active={active === 1}>
                 <h1>Content 2</h1>
+              </Content>
+              <Content active={active === 2}>
+                <h1>Content 3</h1>
+              </Content>
+              <Content active={active === 3}>
+                <h1>Content 4</h1>
               </Content>
             </div>)
         }
