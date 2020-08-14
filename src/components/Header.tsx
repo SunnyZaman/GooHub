@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  position: fixed;
-  top: 0;
+//   position: fixed;
+//   top: 0;
   width: 100%;
   height:47px;
 //   border-bottom: 1px solid black;

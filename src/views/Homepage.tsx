@@ -6,6 +6,8 @@ import SearchBar from '../components/SearchBar';
 // import { useHistory } from 'react-router-dom';
 
 const HomeWrapper = styled.div`
+  position: fixed;
+  top:0;
   display: flex;
   flex-direction: column;
   justify-content: center;

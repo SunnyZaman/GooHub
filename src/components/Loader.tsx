@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 const LoadingWrapper = styled.div`
+    position: fixed;
+    top:0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
