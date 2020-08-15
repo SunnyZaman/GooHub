@@ -115,14 +115,16 @@ function Profile() {
     }
   };
   console.log(REPOSITORIES);
-
+const loading = false;
   return (
-    <Query query={REPOSITORIES} variables={{}}>
+    // <Query query={REPOSITORIES} variables={{}}>
+    <>
       {
-        ({ data, loading }: any) => {
-          console.log(data);
+        // ({ data, loading }: any) => {
+        //   console.log(data);
 
-          return loading ? (<Loader />) :
+          // return
+           loading ? (<Loader />) :
             (<ResultsContainer><Tabs>
               <Tab onClick={handleClick} active={active === 0} id={0}>
               <Image src={GLogo} alt="G logo" height="20px" width="auto" />
@@ -156,9 +158,10 @@ function Profile() {
                 <h1>Content 4</h1>
               </Content>
             </ResultsContainer>)
-        }
+        // }
       }
-    </Query>
+    {/* // </Query> */}
+    </>
   );
 }
 
