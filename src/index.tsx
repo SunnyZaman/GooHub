@@ -24,15 +24,17 @@ const MainWrapper = styled.div`
   flex-grow: 1;
   position: relative;
   min-height: 100vh;
-  width: 100%;
-  position: absolute
+  // width: 100%;
+  // position: absolute
 `;
 const ViewsContainer = styled.div`
-  width: 100%;
-  height: calc(100% - 47px);
-  position: absolute;
-  top: 47px;
-  z-index: 0;
+  // width: 100%;
+  // height: calc(100% - 47px);
+  // position: absolute;
+  // top: 47px;
+  // z-index: 0;
+  padding-bottom: "64px"
+
 `;
 
 ReactDOM.render(
@@ -41,8 +43,8 @@ ReactDOM.render(
     <HashRouter>
       <GlobalStyle />
       <MainWrapper>
-          <Header />
           <ViewsContainer>
+          <Header />
             <Routes />
           </ViewsContainer>
         <Footer />
