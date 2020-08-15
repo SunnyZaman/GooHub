@@ -7,25 +7,25 @@ import SearchBar from './SearchBar';
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   align-items: center;
 //   position: fixed;
 //   top: 0;
-  width: 100%;
-  height:47px;
+//   width: 100%;
+//   height:47px;
 //   border-bottom: 1px solid black;
 `;
 const InnerContainer = styled.div`
-    margin: 0 auto;
+    // margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 148rem;
-    padding: 0 15px;
+    // max-width: 148rem;
+    padding: 12px 25px 5px 25px;
 `;
 const StyledLink = styled.a`
     font-size: 13px;
@@ -33,6 +33,20 @@ const StyledLink = styled.a`
     text-decoration: none;
     &:hover{
         text-decoration: underline;
+    }
+`;
+const LogoImage = styled.img`
+    margin-left:auto;
+    @media (max-width: 710px) {
+        order:1;
+    }
+`;
+const SearchContainer = styled.div`
+    margin-left:15px;
+    @media (max-width: 710px) {
+        order:2;
+        margin-left:0;
+        width:100%;
     }
 `;
 const LogoSearchContainer = styled.div`
@@ -58,15 +72,17 @@ function Header() {
                 {isHome ?
                     <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
                     (
-                        <LogoSearchContainer>
+                        <>
                             <Link to="/">
                                 <img src={GoogleLogo} alt="Google logo" height="30px" width="auto" />
                             </Link>
-                            <SearchBar isSearching={false} isProfile={true} defaultSearchVal={getSearchQuery} />
-                        </LogoSearchContainer>
+                            <SearchContainer>
+                            <SearchBar isSearching={false} isProfile={true} defaultSearchVal={getSearchQuery}/>
+                            </SearchContainer>
+                            </>
                     )
                 }
-                <img src={GLogo} alt="G logo" height="20px" width="auto" />
+                <LogoImage src={GLogo} alt="G logo" height="20px" width="auto" />
             </InnerContainer>
 
         </Wrapper>

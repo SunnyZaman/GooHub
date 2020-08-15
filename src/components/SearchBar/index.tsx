@@ -5,7 +5,7 @@ import Microphone from './IconButtons/Microphone';
 import Cancel from './IconButtons/Cancel';
 import { useHistory } from 'react-router-dom';
 
-const SearchWrapper = styled.div`
+const SearchWrapper:any = styled.div`
     display: flex;
     align-content: stretch;
     height: 36px;
@@ -18,8 +18,11 @@ const SearchWrapper = styled.div`
     &:hover, &:focus-within {
         box-shadow:0px 3px 8px #E4E4E4;
     };
+    @media (max-width: 710px) {
+        width: ${(props: any) => (props.isProfile ? "auto" : "500px")};
+    }
     @media (max-width: 560px) {
-        width: 90%;
+        width: ${(props: any) => (props.isProfile ? "auto" : "90%")};
     }
 `;
 const SearchInput = styled.input`
@@ -72,7 +75,7 @@ function SearchBar(props: any) {
         inputRef.current!.focus()
     }
     return (
-        <SearchWrapper onClick={inputFocus}>
+        <SearchWrapper isProfile={isProfile} onClick={inputFocus}>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
             <SearchInput type="text" name="search" autoComplete="off"
                 value={searchValue} ref={inputRef} onChange={handleChange} onKeyPress={handleKeyDown} />
