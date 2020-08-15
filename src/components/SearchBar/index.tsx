@@ -5,7 +5,7 @@ import Microphone from './IconButtons/Microphone';
 import Cancel from './IconButtons/Cancel';
 import { useHistory } from 'react-router-dom';
 
-const SearchWrapper:any = styled.div`
+const SearchWrapper: any = styled.div`
     display: flex;
     align-content: stretch;
     height: 36px;
@@ -54,6 +54,7 @@ function SearchBar(props: any) {
         if (isSearching) {
             search();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSearching]);
     const handleChange = (event: any) => {
         const { name, value } = event.target;
@@ -81,8 +82,8 @@ function SearchBar(props: any) {
                 value={searchValue} ref={inputRef} onChange={handleChange} onKeyPress={handleKeyDown} />
             {hasInput && <Cancel setValue={setSearchValue} />}
             <Microphone setValue={setSearchValue} />
-            {isProfile && <SearchButton src={SearchIcon} tabIndex={0} onClick={search} 
-            alt="Search Button" height="15px" width="auto"/>}
+            {isProfile && <SearchButton src={SearchIcon} tabIndex={0} onClick={search}
+                alt="Search Button" height="15px" width="auto" />}
         </SearchWrapper>
     );
 }
