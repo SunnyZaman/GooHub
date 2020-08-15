@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "^5.1.1"
+    "@types/styled-components": "^5.1.1",
+    "bit-bin": "^14.8.8"
   }
 }
