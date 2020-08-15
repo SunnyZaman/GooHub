@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 213 213" width="213" height="213">
+	<defs>
+		<image width="36" height="56" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA4AQMAAACv2sg7AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA9LQAlwMJfwAAAAJ0Uk5TAP9bkSK1AAAAYklEQVR4nL3NsQ2AMAxE0YtSpMwIGSWjOaMxCiNQUiCO2BDLE+DiVadvABDocUwSt2nmPi083Bpswf6pewnSOmaill8ziWXh7VZebuPp9vDkx7xYfjmCsL2pYTRNomoMSecPTtRxuQ7Wi7kAAAAASUVORK5CYII="/>
+		<image width="16" height="15" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPAQMAAADXvd1sAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAAD51YD2TTYwAAAAJ0Uk5TAP9bkSK1AAAAJElEQVR4nGPgf8Ag/4PB/g9D/T8Q+g9E/2HoH1QQKAtUw/8AAPUpFms+ujNPAAAAAElFTkSuQmCC"/>
+		<image width="16" height="16" id="img3" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA9LQAlwMJfwAAAAJ0Uk5TAP9bkSK1AAAAJ0lEQVR4nGNgYGDg/8Bg/4PB/g9D/T+G/0D0HxX9A4kDZeV/AFUCABRHF61QjH+lAAAAAElFTkSuQmCC"/>
+		<image width="16" height="15" id="img4" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPAQMAAADXvd1sAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA20Q3CBNMEAAAAAJ0Uk5TAP9bkSK1AAAAJUlEQVR4nGPg/8Bg/4PB/g9D/T+G/0D0HxX9A4kDZeV/MPB/AAAURBeto2FLDQAAAABJRU5ErkJggg=="/>
+		<image width="213" height="193" id="img5" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAADBAQMAAABiyWdNAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAAQoX0Kl26agAAAAJ0Uk5TAP9bkSK1AAAAaElEQVR4nO3YsQ2AQAxDUUsUjMEoN9qtxig3AiUVgQFwJCSKgL7bVyYpYk1hckiLs1jVrA11a1tqlmLHnF1zusuMYdg7VunesedWaZcwDMMwDMMwDPunVfqBPmLdWt4dNmsj7TGT/vMEtytBSw4dRBgAAAAASUVORK5CYII="/>
+		<image width="36" height="56" id="img6" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA4AQMAAACv2sg7AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA20Q3CBNMEAAAAAJ0Uk5TAP9bkSK1AAAAhklEQVR4nHWQsRGAMAwDnaOgzAisQZfRwmiMwggpKThELGE4Cii+IB87kll8p2PA0jli7czkhK2zkBWtE84E/zOQI5nh/kQW+JwKUD+pH9R36o369tUL9eq6UTfq2vdwf05laokmaFqOR7XYmGLc74U1UiiR0hnu1G8DakPNqCU1lsAOZ7sArFWKi1VcxjEAAAAASUVORK5CYII="/>
+		<image width="36" height="56" id="img7" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA4AQMAAACv2sg7AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAAD51YD2TTYwAAAAJ0Uk5TAP9bkSK1AAAAgUlEQVR4nHWQMQ4DIRADQSlS8oR7yj0Nnpan8IQtU6D4zjagSFEoptrxLk5JrwR5DPL8kBVmE19iF0N8i0OkcALmLRygUEDhCQoPUMiQAAn1v9AlhISQsJlXXKxJW05wmpO1xRu93Zf8jvvyOo8a+3eYP+1fDbTdjFtyY4XjKXPkAqrshpyA+j3MAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Layer">
+		<use id="Layer" href="#img1" x="88" y="102" />
+		<use id="Layer" href="#img2" x="164" y="34" />
+		<use id="Layer" href="#img3" x="137" y="33" />
+		<use id="Layer" href="#img4" x="110" y="34" />
+		<use id="Layer" href="#img5" x="0" y="10" />
+		<use id="Layer" href="#img6" x="47" y="102" />
+		<use id="Layer" href="#img7" x="130" y="102" />
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+	<g id="Layer">
+	</g>
+</svg>
