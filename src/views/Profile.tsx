@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { RepositoryIcon, StatisticsIcon, PeopleIcon } from '../assets/images';
 import Tabs from '@bit/mui-org.material-ui.tabs';
 import Tab from '@bit/mui-org.material-ui.tab';
+import Repository from '../components/Profile/Repository';
 
 const ResultsContainer = styled.div`
 margin: 10px 0;
@@ -70,7 +71,7 @@ font-family: arial,sans-serif !important;
 //   }
 `;
 const Image: any = styled.img`
-  filter: ${(props: any) => (props.filter ? "grayscale(100%)" : "none")};
+  filter: ${(props: any) => (props.hasFilter ? "grayscale(100%)" : "none")};
 margin-right: 5px;
 `;
 // const Content: any = styled.div`
@@ -96,7 +97,9 @@ function TabPanel(props: TabPanelProps) {
       style={{ padding: '0 50px' }}
     >
       {value === index && (
-        <p> {children}</p>
+        <>
+        {children}
+        </>
       )}
     </div>
   );
@@ -179,50 +182,16 @@ function Profile() {
   };
   console.log(REPOSITORIES);
   // const loading = false;
+  // console.log(value)
   return (
-    <Query query={REPOSITORIES} variables={{}}>
-      {
-        ({ data, loading }: any) => {
-          console.log(data);
+    // <Query query={REPOSITORIES} variables={{}}>
+    //   {
+    //     ({ data, loading }: any) => {
+    //       console.log(data);
 
-          return loading ? (<Loader />) :
-            (
+    //       return loading ? (<Loader />) :
+    //         (
               <ResultsContainer>
-
-                {/* <Tabs>
-              <Tab onClick={handleClick} active={active === 0} id={0}>
-              <Image src={GLogo} alt="G logo" height="20px" width="auto" />
-                Repositories
-              </Tab>
-
-              <Tab onClick={handleClick} active={active === 1} id={1}>
-              <Image src={GLogo} alt="G logo" height="20px" width="auto" />
-                Statistics
-              </Tab>
-              <Tab onClick={handleClick} active={active === 2} id={2}>
-              <Image src={GLogo} alt="G logo" height="20px" width="auto" />
-                Followers
-              </Tab>
-              <Tab onClick={handleClick} active={active === 3} id={3}>
-              <Image src={GLogo} alt="G logo" height="20px" width="auto" />
-                Following
-              </Tab>
-            </Tabs>
-
-              <Content active={active === 0}>
-                <h1>Content 1</h1>
-              </Content>
-              <Content active={active === 1}>
-                <h1>Content 2</h1>
-              </Content>
-              <Content active={active === 2}>
-                <h1>Content 3</h1>
-              </Content>
-              <Content active={active === 3}>
-                <h1>Content 4</h1>
-              </Content> */}
-
-
                 <CustomTabs
                   // style={{height: "36px"}}
                   value={value}
@@ -233,13 +202,13 @@ function Profile() {
                   //                   textColor="blue"
                   aria-label="scrollable tabs"
                 >
-                  <CustomTab label="Repositories" icon={<Image filter={value !== 0} src={RepositoryIcon} alt="Repository icon" height="20px" width="auto" />} {...a11yProps(0)} />
-                  <CustomTab label="Statistics" icon={<Image filter={value !== 1} src={StatisticsIcon} alt="Statistics icon" height="20px" width="auto" />}{...a11yProps(1)} />
-                  <CustomTab label="Followers" icon={<Image filter={value !== 2} src={PeopleIcon} alt="Followers icon" height="20px" width="auto" />} {...a11yProps(2)} />
-                  <CustomTab label="Following" icon={<Image filter={value !== 3} src={PeopleIcon} alt="Following icon" height="20px" width="auto" />} {...a11yProps(3)} />
+                  <CustomTab label="Repositories" icon={<Image hasFilter={value !== 0} src={RepositoryIcon} alt="Repository icon" height="20px" width="auto" />} {...a11yProps(0)} />
+                  <CustomTab label="Statistics" icon={<Image hasFilter={value !== 1} src={StatisticsIcon} alt="Statistics icon" height="20px" width="auto" />}{...a11yProps(1)} />
+                  <CustomTab label="Followers" icon={<Image hasFilter={value !== 2} src={PeopleIcon} alt="Followers icon" height="20px" width="auto" />} {...a11yProps(2)} />
+                  <CustomTab label="Following" icon={<Image hasFilter={value !== 3} src={PeopleIcon} alt="Following icon" height="20px" width="auto" />} {...a11yProps(3)} />
                 </CustomTabs>
                 <TabPanel value={value} index={0}>
-                  Repositories
+                  <Repository/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                   Statistics
@@ -251,10 +220,10 @@ function Profile() {
                   Following
                 </TabPanel>
               </ResultsContainer>
-            )
-        }
-      }
-    </Query>
+    //         )
+    //     }
+    //   }
+    // </Query>
   );
 }
 
