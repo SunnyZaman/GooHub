@@ -4,10 +4,12 @@ import Pagination from '../Pagination';
 
 function Repository() {
     const [pager, setPager]= useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
     return (
         <>
         <p>Repository oof</p>
-        <Pagination pager={pager}/>
+        <Pagination currentPage={currentPage} postsPerPage={postsPerPage}/>
         </>
     );
 }

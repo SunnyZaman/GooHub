@@ -46,6 +46,13 @@ const PageButton = styled.button`
     &:hover ${CustomLabel}{
         border-bottom: 1px solid #4285f4;
     }
+    &:disabled {
+        cursor:default;
+        ${CustomLabel}{
+        border-bottom: 1px solid transparent;
+        color: #000000;
+        }
+    }
 `;
 
 const Letter:any = styled.span`
@@ -53,7 +60,8 @@ const Letter:any = styled.span`
     font-weight: 700;
     color: ${(props: any) => props.color};
 `;
-function Pagination(props: any) {
+function Pagination(props:any) {
+    const {currentPage,postsPerPage} = props;
     const tempData = [{}, {}, {}, {}];
 
     const setPage = (page: any) => {
@@ -68,7 +76,9 @@ function Pagination(props: any) {
             <Letter color="#4285F5">G</Letter>
             {
                 tempData.map((data, index) => (
-                    <PageButton><Letter color="#FBBD06">o</Letter><CustomLabel>{index + 1}</CustomLabel>
+                    <PageButton disabled={currentPage===index+1}>
+                        <Letter color={currentPage===index+1?"#EA4436":"#FBBD06"}>o</Letter>
+                        <CustomLabel>{index + 1}</CustomLabel>
                     </PageButton>
                 ))}
             <Letter color="#4285F5">h</Letter><Letter color="#EA4436">u</Letter><Letter color="#34A952">b</Letter>
