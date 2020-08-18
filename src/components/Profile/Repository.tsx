@@ -38,7 +38,7 @@ function Repository(props: any) {
     //         description: "Programs made with C."
     //     }
     // ]
-    console.log("repos: ", repositories);
+    // console.log("repos: ", repositories);
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -51,8 +51,8 @@ function Repository(props: any) {
             currentPosts !== undefined &&
             <>
                 {
-                    currentPosts.map((repository:any) => (
-                        <RepositoryContainer>
+                    currentPosts.map((repository:any, index:number) => (
+                        <RepositoryContainer key={index}>
                             <RepoLink>{repository.url}</RepoLink>
                             <RepoName>{repository.name}</RepoName>
                             <RepoBody>{new Date(repository.createdAt).toDateString()} - {repository.description}</RepoBody>

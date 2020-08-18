@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { LeftChevron, RightChevron } from '../assets/images';
 const PaginationContainer = styled.div`
@@ -66,7 +66,39 @@ function Pagination(props: any) {
     for (let i = 1; i <= Math.ceil(totalAmount / postsPerPage); i++) {
         pageNumbers.push(i);
     }
+    const [startIndex, setStartIndex] = useState(0);
+    const [endIndex, setEndIndex] = useState(10);
+    const checkNextPage = (page:any) =>{
+        if(page===endIndex){
+            const newEndIndex = endIndex + 1;
+            const newStartIndex = startIndex + 1;
+            console.log("new start: ", newStartIndex);
+            if(newEndIndex<=totalAmount){
+                setStartIndex(newStartIndex);
+                setEndIndex(newEndIndex);
+            }
+        }
+    }
+    const checkPreviousPage = (page:any) =>{
+
+        
+        if(page-1===startIndex){
+            const newEndIndex = endIndex - 1;
+            const newStartIndex = startIndex - 1;
+            // console.log("current page: ", page, startIndex);
+            console.log("new start: ", newStartIndex);
+            
+            if(newStartIndex>=0){
+                setStartIndex(newStartIndex);
+                setEndIndex(newEndIndex);
+            }
+        }
+    }
     const setPage = (page: any) => {
+        console.log(page, " ", startIndex, " ", endIndex);
+        
+        checkNextPage(page);
+        checkPreviousPage(page);
         paginate(page);
         // handle when page goes to last item, or first item
     }
@@ -99,7 +131,7 @@ function Pagination(props: any) {
                         // <>
                         // {pager}
                         // </>
-                        pageNumbers.map(number => (
+                        pageNumbers.slice(startIndex, endIndex).map(number => (
                             <PageButton key={number} disabled={currentPage === number} onClick={() => setPage(number)}>
                                 <Letter color={currentPage === number ? "#EA4436" : "#FBBD06"}>o</Letter>
                                 <CustomLabel>{number}</CustomLabel>
