@@ -146,7 +146,7 @@ function Profile() {
   console.log(searchQuery);
 
   const REPOSITORIES = gql`
-{
+  {
     user(login: "${searchQuery}") {
       url
       name
@@ -159,24 +159,45 @@ function Profile() {
           description
           isPrivate
           languages(first: 5) {
-              nodes {
-                color
-                name
-              }
+            nodes {
+              color
+              name
             }
+          }
         }
       }
-      followers(first:100){
+      followers(first: 100){
         nodes{
           name
           avatarUrl
           login
+          url
           bio
+          followers(first: 0) {
+            totalCount
+          }
+          following(first: 0) {
+            totalCount
+          }
         }
+      }
+      following(first: 100){
+        nodes{
+          name
+          avatarUrl
+          login
+          url
+          bio
+            followers(first: 0) {
+              totalCount
+            }
+            following(first: 0) {
+              totalCount
+            }
+        }
+      }
     }
-  }
-}
-`;
+}`;
   // const [active, setActive] = useState(0);
   // const handleClick = (e: any) => {
   //   console.log("Event:", e);
@@ -190,7 +211,7 @@ function Profile() {
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
-  console.log(REPOSITORIES);
+  // console.log(REPOSITORIES);
   // const loading = false;
   // console.log(value)
   return (
@@ -226,6 +247,7 @@ function Profile() {
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <Follow users={data.user.followers.nodes}/>
+                  {/* <Follow/> */}
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                 <Follow users={data.user.following.nodes}/>
