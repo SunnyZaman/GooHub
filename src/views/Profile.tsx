@@ -8,13 +8,14 @@ import { RepositoryIcon, StatisticsIcon, PeopleIcon } from '../assets/images';
 import Tabs from '@bit/mui-org.material-ui.tabs';
 import Tab from '@bit/mui-org.material-ui.tab';
 import Repository from '../components/Profile/Repository';
+import Follow from '../components/Profile/Follow';
 
 const ResultsContainer = styled.div`
 margin: 10px 0;
 `;
 
 const CustomTabs = styled(Tabs)`
-margin-bottom: 5px;
+margin-bottom: 10px;
 border-bottom: 1px solid #ebebeb;
 height: 36px !important;
 & .MuiTab-labelIcon {
@@ -224,10 +225,10 @@ function Profile() {
                   Statistics
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  Followers
+                  <Follow users={data.user.followers.nodes}/>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                  Following
+                <Follow users={data.user.following.nodes}/>
                 </TabPanel>
               </ResultsContainer>
             )
