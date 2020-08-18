@@ -14,6 +14,7 @@ margin: 10px 0;
 `;
 
 const CustomTabs = styled(Tabs)`
+margin-bottom: 5px;
 border-bottom: 1px solid #ebebeb;
 height: 36px !important;
 & .MuiTab-labelIcon {
@@ -72,7 +73,16 @@ font-family: arial,sans-serif !important;
 `;
 const Image: any = styled.img`
   filter: ${(props: any) => (props.hasFilter ? "grayscale(100%)" : "none")};
-margin-right: 5px;
+  margin-right: 5px;
+`;
+
+const CustomLink = styled.a`
+  color: #70757a;
+  margin-left: 50px;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 `;
 // const Content: any = styled.div`
 //   ${(props: any) => (props.active ? "" : "display:none")}
@@ -94,11 +104,11 @@ function TabPanel(props: TabPanelProps) {
       id={`scrollable-force-tabpanel-${index}`}
       aria-labelledby={`scrollable-force-tab-${index}`}
       {...other}
-      style={{ padding: '0 50px' }}
+      style={{ padding: '0 50px', marginBottom: '25px' }}
     >
       {value === index && (
         <>
-        {children}
+          {children}
         </>
       )}
     </div>
@@ -140,14 +150,13 @@ function Profile() {
       url
       name
       login
-      repositories(first: 100, affiliations: OWNER, isFork: false, ownerAffiliations: OWNER) {
+      repositories(first: 100, isFork: false) {
         nodes {
           url
-          nameWithOwner
           name
           createdAt
           description
-          homepageUrl,
+          isPrivate
           languages(first: 5) {
               nodes {
                 color
@@ -184,13 +193,12 @@ function Profile() {
   // const loading = false;
   // console.log(value)
   return (
-    // <Query query={REPOSITORIES} variables={{}}>
-    //   {
-    //     ({ data, loading }: any) => {
-    //       console.log(data);
-
-    //       return loading ? (<Loader />) :
-    //         (
+    <Query query={REPOSITORIES} variables={{}}>
+      {
+        ({ data, loading }: any) => {
+          console.log(data);
+          return loading ? (<Loader />) :
+            (
               <ResultsContainer>
                 <CustomTabs
                   // style={{height: "36px"}}
@@ -207,8 +215,10 @@ function Profile() {
                   <CustomTab label="Followers" icon={<Image hasFilter={value !== 2} src={PeopleIcon} alt="Followers icon" height="20px" width="auto" />} {...a11yProps(2)} />
                   <CustomTab label="Following" icon={<Image hasFilter={value !== 3} src={PeopleIcon} alt="Following icon" height="20px" width="auto" />} {...a11yProps(3)} />
                 </CustomTabs>
+                <CustomLink href={data.user.url}>@{data.user.login}</CustomLink>
                 <TabPanel value={value} index={0}>
-                  <Repository/>
+                  <Repository repositories={data.user.repositories.nodes} />
+                  {/* <Repository/> */}
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                   Statistics
@@ -220,10 +230,10 @@ function Profile() {
                   Following
                 </TabPanel>
               </ResultsContainer>
-    //         )
-    //     }
-    //   }
-    // </Query>
+            )
+        }
+      }
+    </Query>
   );
 }
 

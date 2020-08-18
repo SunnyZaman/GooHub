@@ -33,7 +33,9 @@ const ViewsContainer = styled.div`
   // position: absolute;
   // top: 47px;
   // z-index: 0;
-  padding-bottom: "64px"
+  // padding-bottom: "64px"
+  min-height: calc(100vh - 50px);
+
 
 `;
 
