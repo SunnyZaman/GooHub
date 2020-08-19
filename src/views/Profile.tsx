@@ -9,6 +9,7 @@ import Tabs from '@bit/mui-org.material-ui.tabs';
 import Tab from '@bit/mui-org.material-ui.tab';
 import Repository from '../components/Profile/Repository';
 import Follow from '../components/Profile/Follow';
+import Statistics from '../components/Profile/Statistics';
 
 const ResultsContainer = styled.div`
 margin: 10px 0;
@@ -149,6 +150,7 @@ function Profile() {
   {
     user(login: "${searchQuery}") {
       url
+      avatarUrl
       name
       login
       repositories(first: 100, isFork: false) {
@@ -237,13 +239,14 @@ function Profile() {
                   <CustomTab label="Followers" icon={<Image hasFilter={value !== 2} src={PeopleIcon} alt="Followers icon" height="20px" width="auto" />} {...a11yProps(2)} />
                   <CustomTab label="Following" icon={<Image hasFilter={value !== 3} src={PeopleIcon} alt="Following icon" height="20px" width="auto" />} {...a11yProps(3)} />
                 </CustomTabs>
-                <CustomLink href={data.user.url}>@{data.user.login}</CustomLink>
+                <CustomLink href={data.user.url}  target="_blank">@{data.user.login}</CustomLink>
                 <TabPanel value={value} index={0}>
                   <Repository repositories={data.user.repositories.nodes} />
                   {/* <Repository/> */}
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  Statistics
+                  <Statistics repositories={data.user.repositories.nodes} followers={data.user.followers.nodes.length}
+                  following={data.user.following.nodes.length} avatar={data.user.avatarUrl}/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <Follow users={data.user.followers.nodes}/>
