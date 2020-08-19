@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Pagination from '../Pagination';
 const FollowContainer =  styled.div`
     margin-top: 10px;
 `;
@@ -9,7 +10,6 @@ const StyledLink = styled.a`
 `;
 const UserContainer =  styled.div`
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     padding: 10px 0;
     border-bottom: 1px solid #ebebeb;
@@ -17,10 +17,10 @@ const UserContainer =  styled.div`
 `;
 
 const UserImage = styled.img`
-border-radius: 50%;
+// border-radius: 50%;
 `;
 const UserLogin = styled.p`
-    margin: 0;
+    margin: 0 0 2px 0;
     color: #696868;
     font-size: 17px;
     // text-decoration: underline;
@@ -34,11 +34,11 @@ const UserInformation = styled.div`
     }
 `;
 const UserName = styled.h2`
-    margin: 0;
+    margin: 0 0 2px 0;
     font-size: 21px;
 `;
 const UserStats = styled.p`
-    margin: 0 0 1px 0;
+    margin: 0 0 2px 0;
     color: #696868;
 `;
 const UserBio = styled.p`
@@ -61,18 +61,26 @@ function Follow(props: any) {
     //         }
     //     }
     // ]
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentUsers = users?.slice(indexOfFirstPost, indexOfLastPost);
+  
+    // Change page
+    const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
     return (
         <FollowContainer>
             {
-            users !== undefined &&
+            currentUsers !== undefined &&
             <>
                 {
-                    users.map((user:any, index:number) => (
+                    currentUsers.map((user:any, index:number) => (
                         <UserContainer key={index}>
-                            <StyledLink href={user.url}>
-                            <UserImage src={user.avatarUrl} alt={user.login + 'avatar'} height="50px" width="auto"/>
+                            <StyledLink href={user.url} target="_blank">
+                            <UserImage src={user.avatarUrl} alt={user.login + 'avatar'} height="70px" width="auto"/>
                             </StyledLink>
-                            <StyledLink href={user.url}>
+                            <StyledLink href={user.url} target="_blank">
                             <UserInformation>
                                 <UserName>{user.name}</UserName>
                                 <UserLogin>@{user.login}</UserLogin>
@@ -82,8 +90,8 @@ function Follow(props: any) {
                             </StyledLink>
                         </UserContainer>
                     ))}
-                {/* <Pagination currentPage={currentPage} postsPerPage={postsPerPage} totalAmount={repositories.length}
-                paginate={paginate} /> */}
+                <Pagination currentPage={currentPage} postsPerPage={postsPerPage} totalAmount={users.length}
+                paginate={paginate} />
             </>
         }
         </FollowContainer>

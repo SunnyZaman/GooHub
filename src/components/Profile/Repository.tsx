@@ -9,14 +9,20 @@ const RepositoryContainer = styled.div`
       margin-top: 15px;
   }	
 `;
-const RepoLink =  styled.a`
-    color: #202124;
-`;
 const RepoName =  styled.h2`
     color: #1a0dab;
     margin: 6px 0px;
     font-weight: normal;
     font-size: 20px;
+`;
+const RepoLink =  styled.a`
+    color: #202124;
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    &:hover ${RepoName}{
+        text-decoration: underline;
+    }
 `;
 const RepoBody =  styled.div`
     display: flex;
@@ -53,8 +59,9 @@ function Repository(props: any) {
                 {
                     currentPosts.map((repository:any, index:number) => (
                         <RepositoryContainer key={index}>
-                            <RepoLink>{repository.url}</RepoLink>
+                            <RepoLink href={repository.url} target="_blank"><span>{repository.url}</span>
                             <RepoName>{repository.name}</RepoName>
+                            </RepoLink>
                             <RepoBody>{new Date(repository.createdAt).toDateString()} - {repository.description}</RepoBody>
                         </RepositoryContainer>
                     ))}
