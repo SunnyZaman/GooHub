@@ -159,9 +159,7 @@ function Profile() {
   return (
     <Query query={REPOSITORIES} variables={{}}>
       {
-        ({ data, loading, error }: any) => {
-          console.log(error);
-          
+        ({ data, loading, error }: any) => {          
           return loading ? (<Loader />) :
             (
               <>
