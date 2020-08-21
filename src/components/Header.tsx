@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
-import { GoogleLogo, GLogo } from '../assets/images';
+import { GoohubLogo, GoohubIcon } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 
@@ -15,6 +15,7 @@ const InnerContainer = styled.div`
     align-items: center;
     width: 100%;
     padding: 12px 25px 5px 25px;
+    z-index: 999;
 `;
 const StyledLink = styled.a`
     font-size: 13px;
@@ -24,8 +25,10 @@ const StyledLink = styled.a`
         text-decoration: underline;
     }
 `;
-const LogoImage = styled.img`
+const IconLink = styled.a`
     margin-left:auto;
+`;
+const LogoImage = styled.img`
     @media (max-width: 710px) {
         order:1;
     }
@@ -49,11 +52,11 @@ function Header() {
             <InnerContainer>
                 {/* temp link, will link to my portfolio */}
                 {isHome ?
-                    <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
+                    <StyledLink href="https://www.linkedin.com/in/sunny-zaman-24890a86/" target="_blank">Sunny Zaman</StyledLink> :
                     (
                         <>
                             <Link to="/">
-                                <img src={GoogleLogo} alt="Google logo" height="30px" width="auto" />
+                                <img src={GoohubLogo} alt="GooHub logo" height="30px" width="auto" />
                             </Link>
                             <SearchContainer>
                                 <SearchBar isSearching={false} isProfile={true} defaultSearchVal={getSearchQuery} />
@@ -61,7 +64,9 @@ function Header() {
                         </>
                     )
                 }
-                <LogoImage src={GLogo} alt="G logo" height="20px" width="auto" />
+                <IconLink href="https://github.com/SunnyZaman" target="_blank">
+                    <LogoImage src={GoohubIcon} alt="GooHub icon" height="30px" width="auto" />
+                </IconLink>
             </InnerContainer>
 
         </Wrapper>

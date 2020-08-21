@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleLogo } from '../assets/images';
+import { GoohubLogo } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 const HomeWrapper = styled.div`
@@ -42,13 +42,13 @@ function Homepage() {
   }
   return (
     <HomeWrapper>
-      <img src={GoogleLogo} alt="Google logo" height="100px" width="auto" />
+      <img src={GoohubLogo} alt="GooHub logo" height="100px" width="auto" />
       <SearchBar isSearching={isSearching} isProfile={false} defaultSearchVal={""}/>
       <ButtonContainer>
         <Button onClick={handleClick}>
           Google Search
         </Button>
-        <Button onClick={()=>alert("That's good")}>I'm Feeling Lucky</Button>
+        <Button onClick={()=>alert("That's great!")}>I'm Feeling Lucky</Button>
       </ButtonContainer>
       <p>Google offered in: <a href="/">Francais</a></p>
     </HomeWrapper>
