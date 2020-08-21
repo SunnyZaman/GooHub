@@ -1,31 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
-import { GoogleLogo, GLogo } from '../assets/images';
+import { GoohubLogo, GoohubIcon } from '../assets/images';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 
 const Wrapper = styled.div`
   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   position: fixed;
-//   top: 0;
-//   width: 100%;
-//   height:47px;
-//   border-bottom: 1px solid black;
 `;
 const InnerContainer = styled.div`
-    // margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // justify-content: space-between;
     align-items: center;
     width: 100%;
-    // max-width: 148rem;
     padding: 12px 25px 5px 25px;
+    z-index: 999;
 `;
 const StyledLink = styled.a`
     font-size: 13px;
@@ -35,8 +25,10 @@ const StyledLink = styled.a`
         text-decoration: underline;
     }
 `;
-const LogoImage = styled.img`
+const IconLink = styled.a`
     margin-left:auto;
+`;
+const LogoImage = styled.img`
     @media (max-width: 710px) {
         order:1;
     }
@@ -49,32 +41,22 @@ const SearchContainer = styled.div`
         width:100%;
     }
 `;
-// const LogoSearchContainer = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     margin: -12px 0 0 -12px;
-//     >*{
-//         margin: 12px 0 0 12px;
-//     }
-// `;
 function Header() {
     const location = useLocation();
     const isHome = (location.pathname === "/" || location.pathname === "/home") ? true : false;
     const getSearchQuery = () => {
         return location.pathname.split("profile/")[1];
     }
-    // console.log(location.pathname);
     return (
         <Wrapper>
             <InnerContainer>
                 {/* temp link, will link to my portfolio */}
                 {isHome ?
-                    <StyledLink href="https://github.com/SunnyZaman" target="_blank">Sunny Zaman</StyledLink> :
+                    <StyledLink href="https://www.linkedin.com/in/sunny-zaman-24890a86/" target="_blank">Sunny Zaman</StyledLink> :
                     (
                         <>
                             <Link to="/">
-                                <img src={GoogleLogo} alt="Google logo" height="30px" width="auto" />
+                                <img src={GoohubLogo} alt="GooHub logo" height="30px" width="auto" />
                             </Link>
                             <SearchContainer>
                                 <SearchBar isSearching={false} isProfile={true} defaultSearchVal={getSearchQuery} />
@@ -82,7 +64,9 @@ function Header() {
                         </>
                     )
                 }
-                <LogoImage src={GLogo} alt="G logo" height="20px" width="auto" />
+                <IconLink href="https://github.com/SunnyZaman" target="_blank">
+                    <LogoImage src={GoohubIcon} alt="GooHub icon" height="30px" width="auto" />
+                </IconLink>
             </InnerContainer>
 
         </Wrapper>
