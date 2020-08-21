@@ -128,7 +128,7 @@ function Statistics(props: any) {
                 <Chart data={chartData} title={"Your Top Languages"} />
             </ChartContainer>
             <ContributionsContainer>
-                <ContributionsHeader>{totalContributions} contributions made in the last year</ContributionsHeader>
+                <ContributionsHeader>{totalContributions} contributions made in the last year!</ContributionsHeader>
                 < div className="calendar"></div>
             </ContributionsContainer>
         </StatisticsContainer>
