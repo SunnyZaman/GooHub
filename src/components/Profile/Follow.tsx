@@ -84,7 +84,7 @@ function Follow(props: any) {
                             <UserInformation>
                                 <UserName>{user.name}</UserName>
                                 <UserLogin>@{user.login}</UserLogin>
-                                <UserStats>{user.followers.totalCount} {user.followers.totalCount>1?"followers":"follower"} · {user.following.totalCount} following</UserStats>
+                            <UserStats>{user.followers.totalCount} {user.followers.totalCount>1?"followers":"follower"} · {user.following.totalCount} following</UserStats>
                                 <UserBio>{user.bio}</UserBio>
                             </UserInformation>
                             </StyledLink>
