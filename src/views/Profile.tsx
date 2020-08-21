@@ -153,6 +153,11 @@ function Profile() {
       avatarUrl
       name
       login
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+        }
+      }
       repositories(first: 100, isFork: false) {
         nodes {
           url
@@ -169,6 +174,7 @@ function Profile() {
         }
       }
       followers(first: 100){
+        totalCount
         nodes{
           name
           avatarUrl
@@ -184,6 +190,7 @@ function Profile() {
         }
       }
       following(first: 100){
+        totalCount
         nodes{
           name
           avatarUrl
@@ -245,8 +252,10 @@ function Profile() {
                   {/* <Repository/> */}
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  <Statistics repositories={data.user.repositories.nodes} followers={data.user.followers.nodes.length}
-                  following={data.user.following.nodes.length} avatar={data.user.avatarUrl}/>
+                  <Statistics repositories={data.user.repositories.nodes} followers={data.user.followers.totalCount}
+                  following={data.user.following.totalCount} avatar={data.user.avatarUrl}
+                  totalContributions={data.user.contributionsCollection.contributionCalendar.totalContributions}
+                  login={data.user.login}/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <Follow users={data.user.followers.nodes}/>

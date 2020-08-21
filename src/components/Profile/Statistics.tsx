@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Chart from '../Chart';
-
+// import Contributions from '../Contributions';
+import GitHubCalendar from "github-calendar";
+import "../../assets/style/github-calendar-responsive.css";
 const StatisticsContainer = styled.div`
     width: 100%;
     display:flex;
-    flex-wrap:100%;
+    flex-wrap:wrap;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
@@ -35,13 +37,41 @@ const Stat = styled.div`
 const Bold = styled.span`
     font-weight: 600;
 `;
+const ContributionsContainer = styled.div`
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+`;
+const ContributionsHeader = styled.h2`
+    font-size: 18px;
+`;
 function Statistics(props: any) {
-    const { repositories, followers, following, avatar } = props;
+    const { repositories, followers, following, avatar, totalContributions, login } = props;
     const [chartData, setChartData] = useState({});
+    // const [contributionsData, setContributionsData] = useState([]);
     const adjustColor = (color: any, amount: any) => {
         return '#' + color.replace(/^#/, '').replace(/../g, (color: any) => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
     }
+    // const getContributions = () =>{
+    //     const userContributions:any = [];
+    //     if(contributions!==undefined){
+    //         contributions.weeks.forEach((week:any)=>{
+    //             week.contributionDays.forEach((day:any)=>{
+    //                 userContributions.push(day);
+    //             })
+    //         })
+    //     }
+    //     console.log("user contributions", userContributions)
+    //     setContributionsData(userContributions);
+    // }
     useEffect(() => {
+        if (login !== undefined) {
+            GitHubCalendar(".calendar", login, { responsive: true, global_stats: false, tooltips: true });
+        }
+    }, [login]);
+
+    useEffect(() => {
+        // getContributions();
         const labels: any = [];
         const values: any = [];
         const backgroundColors: any = [];
@@ -97,6 +127,10 @@ function Statistics(props: any) {
             <ChartContainer>
                 <Chart data={chartData} title={"Your Top Languages"} />
             </ChartContainer>
+            <ContributionsContainer>
+                <ContributionsHeader>{totalContributions} contributions made in the last year!</ContributionsHeader>
+                < div className="calendar"></div>
+            </ContributionsContainer>
         </StatisticsContainer>
     );
 }
