@@ -159,22 +159,21 @@ function Profile() {
   return (
     <Query query={REPOSITORIES} variables={{}}>
       {
-        ({ data, loading }: any) => {
+        ({ data, loading, error }: any) => {
+          console.log(error);
+          
           return loading ? (<Loader />) :
             (
               <>
                 {
-                  data !== undefined ? (
+                  error === undefined ? (
 
                     <ResultsContainer>
                       <CustomTabs
-                        // style={{height: "36px"}}
                         value={value}
                         onChange={handleChange}
                         variant="scrollable"
                         scrollButtons="on"
-                        // TabIndicatorProps={{style: {background:'green'}}}
-                        //                   textColor="blue"
                         aria-label="scrollable tabs"
                       >
                         <CustomTab label="Repositories" icon={<Image hasFilter={value !== 0} src={RepositoryIcon} alt="Repository icon" height="20px" width="auto" />} {...a11yProps(0)} />

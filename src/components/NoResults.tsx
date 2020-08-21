@@ -13,10 +13,10 @@ function NoResults(props:any) {
     const { query } = props
     return (
         <NoResultsContatiner>
-            <p>Your search - <strong>{query}</strong> did not match any usernames.</p>
+            <p>Your search - <strong>{query}</strong> did not match any username.</p>
             <p>Suggestions:</p>
             <ul>
-                <li>Make sure username is spelt correctly.</li>
+                <li>Make sure the username is spelt correctly.</li>
                 <li>Try a different username.</li>
                 <li>Try more general usernames.</li>
             </ul>
