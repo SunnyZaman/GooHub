@@ -17,10 +17,19 @@ const ProfileContainer = styled.div`
     display:flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    @media (max-width: 828px) {
+        width:60%;
+    }
+    @media (max-width: 500px) {
+        width:100%;
+    }
 `;
 const ChartContainer = styled.div`
     width: 70%;
+    @media (max-width: 828px) {
+        width:100%;
+    }
 `;
 const StatsContainer = styled.div`
     display:flex;

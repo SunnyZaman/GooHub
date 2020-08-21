@@ -78,7 +78,7 @@ function SearchBar(props: any) {
     return (
         <SearchWrapper isProfile={isProfile} onClick={inputFocus}>
             <SearchImage src={SearchIcon} alt="Search Icon" height="15px" width="auto" />
-            <SearchInput type="text" name="search" autoComplete="off"
+            <SearchInput type="text" name="search" autoComplete="off" placeholder="Search by GitHub username..."
                 value={searchValue} ref={inputRef} onChange={handleChange} onKeyPress={handleKeyDown} />
             {hasInput && <Cancel setValue={setSearchValue} />}
             <Microphone setValue={setSearchValue} />
