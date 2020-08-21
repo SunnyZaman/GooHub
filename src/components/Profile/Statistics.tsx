@@ -57,22 +57,9 @@ const ContributionsHeader = styled.h2`
 function Statistics(props: any) {
     const { repositories, followers, following, avatar, totalContributions, login } = props;
     const [chartData, setChartData] = useState({});
-    // const [contributionsData, setContributionsData] = useState([]);
     const adjustColor = (color: any, amount: any) => {
         return '#' + color.replace(/^#/, '').replace(/../g, (color: any) => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
     }
-    // const getContributions = () =>{
-    //     const userContributions:any = [];
-    //     if(contributions!==undefined){
-    //         contributions.weeks.forEach((week:any)=>{
-    //             week.contributionDays.forEach((day:any)=>{
-    //                 userContributions.push(day);
-    //             })
-    //         })
-    //     }
-    //     console.log("user contributions", userContributions)
-    //     setContributionsData(userContributions);
-    // }
     useEffect(() => {
         if (login !== undefined) {
             GitHubCalendar(".calendar", login, { responsive: true, global_stats: false, tooltips: true });
@@ -80,7 +67,6 @@ function Statistics(props: any) {
     }, [login]);
 
     useEffect(() => {
-        // getContributions();
         const labels: any = [];
         const values: any = [];
         const backgroundColors: any = [];

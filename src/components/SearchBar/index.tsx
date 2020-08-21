@@ -57,8 +57,7 @@ function SearchBar(props: any) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSearching]);
     const handleChange = (event: any) => {
-        const { name, value } = event.target;
-        console.log(name, value);
+        const { value } = event.target;
         setSearchValue(value);
     }
     const handleKeyDown = (event: any) => {
@@ -67,7 +66,6 @@ function SearchBar(props: any) {
         }
     }
     const search = () => {
-        //   console.log("the search val: ", searchValue);
         if (searchValue.length > 0) {
             history.push('/profile/' + searchValue);
         }

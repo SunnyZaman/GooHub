@@ -72,7 +72,6 @@ function Pagination(props: any) {
         if(page===endIndex){
             const newEndIndex = endIndex + 1;
             const newStartIndex = startIndex + 1;
-            console.log("new start: ", newStartIndex);
             if(newEndIndex<=totalAmount){
                 setStartIndex(newStartIndex);
                 setEndIndex(newEndIndex);
@@ -85,35 +84,18 @@ function Pagination(props: any) {
         if(page-1===startIndex){
             const newEndIndex = endIndex - 1;
             const newStartIndex = startIndex - 1;
-            // console.log("current page: ", page, startIndex);
-            console.log("new start: ", newStartIndex);
-            
             if(newStartIndex>=0){
                 setStartIndex(newStartIndex);
                 setEndIndex(newEndIndex);
             }
         }
     }
-    const setPage = (page: any) => {
-        console.log(page, " ", startIndex, " ", endIndex);
-        
+    const setPage = (page: any) => {        
         checkNextPage(page);
         checkPreviousPage(page);
         paginate(page);
         // handle when page goes to last item, or first item
     }
-    // const pages:any = [];
-    // const pager = () => { 
-    //     for (let i = currentPage; i < Math.min(currentPage + 11, pageNumbers.length); i++) {
-    //      pages.push(
-    //         <PageButton key={i} disabled={currentPage === i} onClick={() => setPage(i)}>
-    //         <Letter color={currentPage === i ? "#EA4436" : "#FBBD06"}>o</Letter>
-    //         <CustomLabel>{i}</CustomLabel>
-    //     </PageButton>
-    //      ); 
-    //     } 
-    //     return pages; 
-    // }
     return (
         <>
             {
@@ -128,9 +110,6 @@ function Pagination(props: any) {
                     }
                     <Letter color="#4285F5">G</Letter>
                     {
-                        // <>
-                        // {pager}
-                        // </>
                         pageNumbers.slice(startIndex, endIndex).map(number => (
                             <PageButton key={number} disabled={currentPage === number} onClick={() => setPage(number)}>
                                 <Letter color={currentPage === number ? "#EA4436" : "#FBBD06"}>o</Letter>

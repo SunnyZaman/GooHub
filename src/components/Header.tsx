@@ -7,24 +7,13 @@ import SearchBar from './SearchBar';
 
 const Wrapper = styled.div`
   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   position: fixed;
-//   top: 0;
-//   width: 100%;
-//   height:47px;
-//   border-bottom: 1px solid black;
 `;
 const InnerContainer = styled.div`
-    // margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // justify-content: space-between;
     align-items: center;
     width: 100%;
-    // max-width: 148rem;
     padding: 12px 25px 5px 25px;
 `;
 const StyledLink = styled.a`
@@ -49,22 +38,12 @@ const SearchContainer = styled.div`
         width:100%;
     }
 `;
-// const LogoSearchContainer = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     margin: -12px 0 0 -12px;
-//     >*{
-//         margin: 12px 0 0 12px;
-//     }
-// `;
 function Header() {
     const location = useLocation();
     const isHome = (location.pathname === "/" || location.pathname === "/home") ? true : false;
     const getSearchQuery = () => {
         return location.pathname.split("profile/")[1];
     }
-    // console.log(location.pathname);
     return (
         <Wrapper>
             <InnerContainer>
