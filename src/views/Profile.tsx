@@ -10,6 +10,7 @@ import Tab from '@bit/mui-org.material-ui.tab';
 import Repository from '../components/Profile/Repository';
 import Follow from '../components/Profile/Follow';
 import Statistics from '../components/Profile/Statistics';
+import NoResults from '../components/NoResults';
 
 const ResultsContainer = styled.div`
 margin: 10px 0;
@@ -230,6 +231,10 @@ function Profile() {
           console.log(data);
           return loading ? (<Loader />) :
             (
+              <>
+              {
+                data!==undefined ? (
+
               <ResultsContainer>
                 <CustomTabs
                   // style={{height: "36px"}}
@@ -265,6 +270,10 @@ function Profile() {
                 <Follow users={data.user.following.nodes}/>
                 </TabPanel>
               </ResultsContainer>
+                ):
+                <NoResults query={searchQuery}/>
+              }
+              </>
             )
         }
       }
